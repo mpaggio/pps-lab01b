@@ -13,7 +13,7 @@ public class GoldBankAccountTest {
 
     @BeforeEach
     public void setUp() {
-        this.account = new GoldBankAccount();
+        this.account = new GoldBankAccount(new CoreBankAccount());
     }
 
     @Test

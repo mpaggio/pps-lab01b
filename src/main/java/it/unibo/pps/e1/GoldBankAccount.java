@@ -1,8 +1,12 @@
 package it.unibo.pps.e1;
 
 public class GoldBankAccount implements BankAccount {
-    private final BankAccount base = new CoreBankAccount();
+    private final BankAccount base;
     private static final int MAX_OVERDRAFT = 500;
+
+    public GoldBankAccount(final BankAccount base) {
+        this.base = base;
+    }
 
     @Override
     public int getBalance() {
