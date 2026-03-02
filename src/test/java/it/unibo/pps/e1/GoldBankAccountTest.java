@@ -4,10 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GoldBankAccountTest {
     private BankAccount account;
     private static final int INITIAL_BALANCE = 0;
+    private static final int MAX_OVERDRAFT = 500;
 
     @BeforeEach
     public void setUp() {
@@ -33,5 +35,13 @@ public class GoldBankAccountTest {
         this.account.deposit(depositExample);
         this.account.withdraw(withdrawExample);
         assertEquals(depositExample - (withdrawExample), this.account.getBalance());
+    }
+
+    @Test
+    public void testCannotWithdrawMoreThanMaxOverdraft() {
+        int depositExample = 1000;
+        int withdrawExample = depositExample + MAX_OVERDRAFT + 1;
+        this.account.deposit(depositExample);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(withdrawExample));
     }
 }
