@@ -1,24 +1,24 @@
 package it.unibo.pps.e1;
 
 public class GoldBankAccount implements BankAccount {
-    private int balance;
+    private final BankAccount base = new CoreBankAccount();
     private static final int MAX_OVERDRAFT = 500;
 
     @Override
     public int getBalance() {
-        return this.balance;
+        return this.base.getBalance();
     }
 
     @Override
     public void deposit(final int amount) {
-        this.balance += amount;
+        this.base.deposit(amount);
     }
 
     @Override
     public void withdraw(final int amount) {
-        if ((amount - this.balance) > MAX_OVERDRAFT) {
+        if ((amount - this.base.getBalance()) > MAX_OVERDRAFT) {
             throw new IllegalStateException("Withdraw with total amount over the max possible overdraft!");
         }
-        this.balance -= amount;
+        this.base.withdraw(amount);
     }
 }
