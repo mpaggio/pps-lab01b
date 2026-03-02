@@ -9,12 +9,12 @@ public class GoldBankAccount implements BankAccount {
     }
 
     @Override
-    public void deposit(int amount) {
+    public void deposit(final int amount) {
         this.balance += amount;
     }
 
     @Override
-    public void withdraw(int amount) {
-
+    public void withdraw(final int amount) {
+        this.balance -= amount;
     }
 }
