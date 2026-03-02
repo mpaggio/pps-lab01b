@@ -13,7 +13,7 @@ public class SilverBankAccountTest {
     private final static int SILVER_FEE = 1;
 
     @BeforeEach
-    void init(){
+    void init() {
         this.account = new SilverBankAccount();
     }
 
@@ -39,7 +39,7 @@ public class SilverBankAccountTest {
     }
 
     @Test
-    public void testCannotWithdrawMoreThanAvailable(){
+    public void testCannotWithdrawMoreThanAvailable() {
         int depositExample = 1000;
         int withdrawExample = 1200;
         this.account.deposit(depositExample);
