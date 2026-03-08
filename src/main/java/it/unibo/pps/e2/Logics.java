@@ -29,4 +29,14 @@ public interface Logics{
      * @return the size of the game map
      */
     int getSize();
+
+    /**
+     * @return the position (row,col) of the knight
+     */
+    Pair<Integer, Integer> getKnightPos();
+
+    /**
+     * @return the position (row,col) of the pawn
+     */
+    Pair<Integer, Integer> getPawnPos();
 }
