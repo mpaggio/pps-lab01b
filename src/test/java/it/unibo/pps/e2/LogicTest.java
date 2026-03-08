@@ -13,7 +13,7 @@ public class LogicTest {
 
     @BeforeEach
     public void setUp() {
-        this.logic = new LogicsImpl(LOGIC_INITIAL_SIZE);
+        this.logic = new LogicsImpl(new BoardLogicImpl(LOGIC_INITIAL_SIZE), new KnightLogicImpl());
     }
 
     @Test
@@ -112,7 +112,12 @@ public class LogicTest {
 
     @Test
     public void testKnightHitPawnPosition() {
-        Logics localLogic = new LogicsImpl(5, new Pair<>(0,0), new Pair<>(2,1));
+        Pair<Integer, Integer> pawnPositionExample = new Pair<>(0,0);
+        Pair<Integer, Integer> knightPositionExample = new Pair<>(2,1);
+        Logics localLogic = new LogicsImpl(
+            new BoardLogicImpl(LOGIC_INITIAL_SIZE, pawnPositionExample, knightPositionExample),
+            new KnightLogicImpl()
+        );
         assertTrue(localLogic.hit(localLogic.getPawnPos().getX(), localLogic.getPawnPos().getY()));
     }
 }
