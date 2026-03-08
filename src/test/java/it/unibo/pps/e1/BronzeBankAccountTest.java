@@ -38,6 +38,14 @@ public class BronzeBankAccountTest {
     }
 
     @Test
+    public void testCanWithdrawWithFeeAndNotOverdraft() {
+        int depositExample = 100;
+        int withdrawExample = 100;
+        this.account.deposit(depositExample);
+        assertThrows(IllegalStateException.class, () -> this.account.withdraw(withdrawExample));
+    }
+
+    @Test
     public void testCanWithdrawWithoutFee() {
         int depositExample = 1000;
         int withdrawExample = 99;

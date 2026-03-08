@@ -10,7 +10,11 @@ public class BronzeBankAccount extends AbstractBankAccount{
 
     @Override
     protected boolean canWithdraw(int amount) {
-        return this.getBalance() >= amount;
+        if (amount <= MAX_WITHDRAW_AMOUNT_WITHOUT_FEE) {
+            return this.getBalance() >= amount;
+        } else {
+            return this.getBalance() > amount;
+        }
     }
 
     @Override
